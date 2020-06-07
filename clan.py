@@ -4,53 +4,6 @@
 # clan.py: parses res data from /v1/clan api reqs into usable structures
 
 
-# War log structure
-class WarLogStruct:
-    def __init__(self):
-        self.items = []
-
-
-# War entry structure
-class WarStruct:
-    def __init__(self):
-        self.seasonId = 0
-        self. createdDate = ""
-        self.participants = []
-        self.standings = []
-
-
-# Participant entry structure
-class ParticipantStruct:
-    def __init__(self):
-        self.tag = ""
-        self.name = ""
-        self.cardsEarned = 0
-        self.battlesPlayed = 0
-        self.wins = 0
-        self. collectionDayBattlesPlayed = 0
-        self.numberOfBattles = 0
-
-
-# Standing entry structure
-class StandingStruct:
-    def __init__(self):
-        self.clan = ClanStruct()
-        self.trophyChange = 0
-
-
-# Clan structure (child of standing)
-class ClanStruct:
-    def __init__(self):
-        self.tag = ""
-        self.name = ""
-        self.badgeId = 0
-        self.clanScore = 0
-        self.participants = 0
-        self.battlesPlayed = 0
-        self.wins = 0
-        self.crowns = 0
-
-
 # /v1/clan/{clanTag}/warlog
 def transform_war_log(data):
     # Convert war log data to internal structure
