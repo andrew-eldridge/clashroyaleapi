@@ -1,270 +1,303 @@
-# Clans
+class ClanListStruct:
+    def __init__(self):
+        self.items = None
+
+
 class ClanStruct:
     def __init__(self):
-        self.tag = ""
-        self.name = ""
-        self.type = ""
-        self.description = ""
-        self.badge_id = 0
-        self.clan_score = 0
-        self.clan_war_trophies = 0
+        self.member_list = ClanMemberListStruct()
+        self.badge_id = None
+        self.tag = None
+        self.donations_per_week = None
+        self.clan_chest_status = None
+        self.clan_chest_level = None
+        self.clan_chest_max_level = None
+        self.clan_war_trophies = None
+        self.required_trophies = None
+        self.clan_score = None
+        self.name = None
         self.location = LocationStruct()
-        self.required_trophies = 0
-        self.donations_per_week = 0
-        self.clan_chest_status = ""
-        self.clan_chest_level = 0
-        self.clan_chest_max_level = 0
-        self.members = 0
-        self.member_list = []
+        self.type = None
+        self.members = None
+        self.description = None
+        self.clan_chest_points = None
+        self.badge_urls = None
 
 
-class GenericClanStruct:
+class ClanMemberListStruct:
     def __init__(self):
-        self.tag = ""
-        self.name = ""
-        self.badge_id = 0
-
-
-class MemberStruct:
-    def __init__(self):
-        self.tag = ""
-        self.name = ""
-        self.role = ""
-        self.last_seen = ""
-        self.exp_level = 0
-        self.trophies = 0
-        self.arena = ArenaStruct()
-        self.clan_rank = 0
-        self.previous_clan_rank = 0
-        self.donations = 0
-        self.donations_received = 0
-        self.clan_chest_points = 0
+        self.items = None
 
 
 class LocationStruct:
     def __init__(self):
-        self.id = 0
-        self.name = ""
-        self.is_country = False
-        self.country_code = ""
+        self.localized_name = None
+        self.id = None
+        self.name = None
+        self.is_country = None
+        self.country_code = None
+
+
+class ClanMemberStruct:
+    def __init__(self):
+        self.arena = ArenaStruct()
+        self.clan_chest_points = None
+        self.last_seen = None
+        self.tag = None
+        self.name = None
+        self.role = None
+        self.exp_level = None
+        self.trophies = None
+        self.clan_rank = None
+        self.previous_clan_rank = None
+        self.donations = None
+        self.donations_received = None
 
 
 class ArenaStruct:
     def __init__(self):
-        self.id = ""
-        self.name = ""
+        self.name = None
+        self.id = None
+        self.icon_urls = None
 
 
-# Clans -> Wars
-class WarLogStruct:
+class ClanWarLogStruct:
     def __init__(self):
-        self.items = []
+        self.items = None
 
 
-class WarStruct:
+class ClanWarLogEntryStruct:
     def __init__(self):
-        self.season_id = 0
-        self.created_date = ""
-        self.participants = []
-        self.standings = []
+        self.standings = ClanWarStandingListStruct()
+        self.season_id = None
+        self.participants = ClanWarParticipantListStruct()
+        self.created_date = None
 
 
-class ParticipantStruct:
+class ClanWarStandingListStruct:
     def __init__(self):
-        self.tag = ""
-        self.name = ""
-        self.cards_earned = 0
-        self.battles_played = 0
-        self.wins = 0
-        self.collection_day_battles_played = 0
-        self.number_of_battles = 0
+        self.items = None
 
 
-class StandingStruct:
+class ClanWarParticipantListStruct:
     def __init__(self):
-        self.clan = ClanStruct()
-        self.trophy_change = 0
+        self.items = None
 
 
-class StandingClanStruct:
+class ClanWarStandingStruct:
     def __init__(self):
-        self.tag = ""
-        self.name = ""
-        self.badge_id = 0
-        self.clan_score = 0
-        self.participants = 0
-        self.battles_played = 0
-        self.wins = 0
-        self.crowns = 0
+        self.trophy_change = None
+        self.clan = ClanWarClanStruct()
 
 
-class CurrentWarStruct:
+class ClanWarParticipantStruct:
     def __init__(self):
-        self.state = ""
-        self.war_end_time = ""
-        self.clan = StandingClanStruct()
-        self.participants = []
-        self.clans = []
+        self.tag = None
+        self.name = None
+        self.cards_earned = None
+        self.battles_played = None
+        self.wins = None
+        self.collection_day_battles_played = None
+        self.number_of__battles = None
 
 
-# Players
+class ClanWarClanStruct:
+    def __init__(self):
+        self.tag = None
+        self.clan_score = None
+        self.crowns = None
+        self.badge_id = None
+        self.name = None
+        self.participants = None
+        self.battles_played = None
+        self.wins = None
+
+
+class CurrentClanWarStruct:
+    def __init__(self):
+        self.state = None
+        self.clan = ClanWarClanStruct()
+        self.participants = ClanWarParticipantListStruct()
+        self.clans = ClanWarClanListStruct()
+        self.collection_end_time = None
+        self.war_end_time = None
+
+
+class ClanWarClanListStruct:
+    def __init__(self):
+        self.items = None
+
+
 class PlayerStruct:
     def __init__(self):
-        self.tag = ""
-        self.name = ""
-        self.exp_level = 0
-        self.trophies = 0
-        self.best_trophies = 0
-        self.wins = 0
-        self.losses = 0
-        self.battle_count = 0
-        self.three_crown_wins = 0
-        self.challenge_cards_won = 0
-        self.challenge_max_wins = 0
-        self.tournament_cards_won = 0
-        self.tournament_battle_count = 0
-        self.role = ""
-        self.donations = 0
-        self.donations_received = 0
-        self.total_donations = 0
-        self.war_day_wins = 0
-        self.clan_cards_collected = 0
-        self.clan = GenericClanStruct()
+        self.clan = PlayerClanStruct()
         self.arena = ArenaStruct()
-        self.league_statistics = LeagueStatsStruct()
-        self.badges = []
-        self.achievements = []
-        self.cards = []
-        self.current_deck = []
-        self.current_favorite_card = CardStruct()
+        self.role = None
+        self.wins = None
+        self.losses = None
+        self.total_donations = None
+        self.league_statistics = PlayerLeagueStatisticsStruct()
+        self.cards = PlayerItemLevelListStruct()
+        self.current_favourite_card = ItemStruct()
+        self.badges = PlayerAchievementBadgeListStruct()
+        self.tag = None
+        self.name = None
+        self.exp_level = None
+        self.trophies = None
+        self.best_trophies = None
+        self.donations = None
+        self.donations_received = None
+        self.achievements = PlayerAchievementProgressListStruct()
+        self.battle_count = None
+        self.three_crown_wins = None
+        self.challenge_cards_won = None
+        self.challenge_max_wins = None
+        self.tournament_cards_won = None
+        self.tournament_battle_count = None
+        self.current_deck = PlayerItemLevelListStruct()
+        self.war_day_wins = None
+        self.clan_cards_collected = None
+        self.star_points = None
 
 
-class LeagueStatsStruct:
+class PlayerClanStruct:
     def __init__(self):
-        self.current_season = CurrentSeasonStatsStruct()
-        self.previous_season = PreviousSeasonStatsStruct()
-        self.best_season = BestSeasonStatsStruct()
+        self.badge_id = None
+        self.tag = None
+        self.name = None
+        self.badge_urls = None
 
 
-class CurrentSeasonStatsStruct:
+class PlayerLeagueStatisticsStruct:
     def __init__(self):
-        self.trophies = 0
-        self.best_trophies = 0
+        self.previous_season = LeagueSeasonResultStruct()
+        self.current_season = LeagueSeasonResultStruct()
+        self.best_season = LeagueSeasonResultStruct()
 
 
-class PreviousSeasonStatsStruct:
+class PlayerItemLevelListStruct:
     def __init__(self):
-        self.id = ""
-        self.trophies = 0
-        self.best_trophies = 0
+        self.items = None
 
 
-class BestSeasonStatsStruct:
+class ItemStruct:
     def __init__(self):
-        self.id = ""
-        self.trophies = 0
+        self.icon_urls = None
+        self.name = None
+        self.id = None
+        self.max_level = None
 
 
-class BadgeStruct:
+class PlayerAchievementBadgeListStruct:
     def __init__(self):
-        self.name = ""
-        self.progress = 0
+        self.items = None
 
 
-class LevelEnabledBadgeStruct:
+class PlayerAchievementProgressListStruct:
     def __init__(self):
-        self.name = ""
-        self.level = 0
-        self.max_level = 0
-        self.progress = 0
-        self.target = 0
+        self.items = None
 
 
-class AchievementStruct:
+class LeagueSeasonResultStruct:
     def __init__(self):
-        self.name = ""
-        self.stars = 0
-        self.value = 0
-        self.target = 0
-        self.info = ""
-        self.completion_info = {}
+        self.rank = None
+        self.trophies = None
+        self.best_trophies = None
+        self.id = None
 
 
-class LeveledCardStruct:
+class PlayerItemLevelStruct:
     def __init__(self):
-        self.name = ""
-        self.id = 0
-        self.level = 0
-        self.max_level = 0
-        self.count = 0
-        self.icon_urls = IconUrlsStruct()
+        self.id = None
+        self.count = None
+        self.level = None
+        self.star_level = None
+        self.name = None
+        self.max_level = None
+        self.icon_urls = None
 
 
-class CardStruct:
+class PlayerAchievementBadgeStruct:
     def __init__(self):
-        self.name = ""
-        self.id = 0
-        self.max_level = 0
-        self.icon_urls = IconUrlsStruct()
+        self.max_level = None
+        self.progress = None
+        self.target = None
+        self.level = None
+        self.name = None
 
 
-class IconUrlsStruct:
+class PlayerAchievementProgressStruct:
     def __init__(self):
-        self.medium = ""
+        self.stars = None
+        self.value = None
+        self.name = None
+        self.target = None
+        self.info = None
+        self.completion_info = None
 
 
-# Players -> Chests
 class UpcomingChestsStruct:
     def __init__(self):
-        self.items = []
+        self.items = ChestListStruct()
+
+
+class ChestListStruct:
+    def __init__(self):
+        self.items = None
 
 
 class ChestStruct:
     def __init__(self):
-        self.index = 0
-        self.name = ""
+        self.name = None
+        self.index = None
+        self.icon_urls = None
 
 
-# Players -> Battle log
-class BattleLogStruct:
+class BattleListStruct:
     def __init__(self):
-        self.items = []
+        self.items = None
 
 
 class BattleStruct:
     def __init__(self):
-        self.type = ""
-        self.battle_time = ""
-        self.is_ladder_tournament = False
-        self.arena = ArenaStruct()
         self.game_mode = GameModeStruct()
-        self.deck_selection = ""
-        self.team = []
-        self.opponent = []
+        self.arena = ArenaStruct()
+        self.type = None
+        self.deck_selection = None
+        self.team = PlayerBattleDataListStruct()
+        self.opponent = PlayerBattleDataListStruct()
+        self.challenge_win_count_before = None
+        self.battle_time = None
+        self.challenge_id = None
+        self.tournament_tag = None
+        self.challenge_title = None
+        self.replay_tag = None
+        self.is_ladder_tournament = None
 
 
 class GameModeStruct:
     def __init__(self):
-        self.id = 0
-        self.name = ""
+        self.id = None
+        self.name = None
 
 
-class ContenderStruct:
+class PlayerBattleDataListStruct:
     def __init__(self):
-        self.tag = ""
-        self.name = ""
-        self.starting_trophies = 0
-        self.crowns = 0
-        self.king_tower_hit_points = 0
-        self.clan = GenericClanStruct()
-        self.cards = []
+        self.items = None
 
 
-class CountlessLeveledCardStruct:
+class PlayerBattleDataStruct:
     def __init__(self):
-        self.name = ""
-        self.id = 0
-        self.level = 0
-        self.max_level = 0
-        self.icon_urls = IconUrlsStruct()
+        self.clan = PlayerClanStruct()
+        self.cards = PlayerItemLevelListStruct()
+        self.tag = None
+        self.name = None
+        self.starting_trophies = None
+        self.trophy_change = None
+        self.crowns = None
+        self.king_tower_hit_points = None
+        self.princess_towers_hit_points = None
+
+
+
 
