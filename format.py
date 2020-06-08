@@ -299,5 +299,167 @@ class PlayerBattleDataStruct:
         self.princess_towers_hit_points = None
 
 
+class ItemListStruct:
+    def __init__(self):
+        self.items = None
 
+
+class TournamentHeaderListStruct:
+    def __init__(self):
+        self.items = None
+
+
+class TournamentHeaderStruct:
+    def __init__(self):
+        self.status = None
+        self.preparation_duration = None
+        self.created_time = None
+        self.first_place_card_prize = None
+        self.game_mode = GameModeStruct()
+        self.duration = None
+        self.type = None
+        self.tag = None
+        self.creator_tag = None
+        self.name = None
+        self.description = None
+        self.capacity = None
+        self.max_capacity = None
+        self.level_cap = None
+
+
+class TournamentStruct:
+    def __init__(self):
+        self.members_list = TournamentMemberListStruct()
+        self.status = None
+        self.preparation_duration = None
+        self.created_time = None
+        self.started_time = None
+        self.ended_time = None
+        self.first_place_card_prize = None
+        self.game_mode = GameModeStruct()
+        self.duration = None
+        self.type = None
+        self.tag = None
+        self.creator_tag = None
+        self.name = None
+        self.description = None
+        self.capacity = None
+        self.max_capacity = None
+        self.level_cap = None
+
+
+class TournamentMemberListStruct:
+    def __init__(self):
+        self.items = None
+
+
+class TournamentMemberStruct:
+    def __init__(self):
+        self.clan = PlayerClanStruct()
+        self.rank = None
+        self.previous_rank = None
+        self.tag = None
+        self.name = None
+        self.score = None
+
+
+class LocationListStruct:
+    def __init__(self):
+        self.items = None
+
+
+class ClanRankingListStruct:
+    def __init__(self):
+        self.items = None
+
+
+class ClanRankingStruct:
+    def __init__(self):
+        self.clan_score = None
+        self.badge_id = None
+        self.location = LocationStruct()
+        self.members = None
+        self.tag = None
+        self.name = None
+        self.rank = None
+        self.previous_rank = None
+        self.badge_urls = None
+
+
+class PlayerRankingListStruct:
+    def __init__(self):
+        self.items = None
+
+
+class PlayerRankingStruct:
+    def __init__(self):
+        self.clan = PlayerRankingClanStruct()
+        self.arena = ArenaStruct()
+        self.tag = None
+        self.name = None
+        self.exp_level = None
+        self.rank = None
+        self.previous_rank = None
+        self.trophies = None
+
+
+class PlayerRankingClanStruct:
+    def __init__(self):
+        self.badge_id = None
+        self.tag = None
+        self.name = None
+        self.badge_urls = None
+
+
+class LadderTournamentRankingListStruct:
+    def __init__(self):
+        self.items = None
+
+
+class LadderTournamentRanking:
+    def __init__(self):
+        self.clan = PlayerRankingClanStruct()
+        self.wins = None
+        self.losses = None
+        self.tag = None
+        self.name = None
+        self.rank = None
+        self.previous_rank = None
+
+
+class LadderTournamentListStruct:
+    def __init__(self):
+        self.items = None
+
+
+class LadderTournamentStruct:
+    def __init__(self):
+        self.game_mode = GameModeStruct()
+        self.max_losses = None
+        self.min_exp_level = None
+        self.tournament_level = None
+        self.milestone_rewards = SurvivalMilestoneRewardListStruct()
+        self.free_tier_rewards = SurvivalMilestoneRewardListStruct()
+        self.tag = None
+        self.title = None
+        self.start_time = None
+        self.end_time = None
+        self.top_rank_reward = SurvivalMilestoneRewardListStruct()
+        self.max_top_reward_rank = None
+
+
+class SurvivalMilestoneRewardListStruct:
+    def __init__(self):
+        self.items = None
+
+
+class SurvivalMilestoneRewardStruct:
+    def __init__(self):
+        self.chest = None
+        self.rarity = None
+        self.resource = None
+        self.type = None
+        self.amount = None
+        self.card = ItemStruct()
+        self.wins = None
 

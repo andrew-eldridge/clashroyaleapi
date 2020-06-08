@@ -1,0 +1,194 @@
+[1mdiff --git a/.idea/workspace.xml b/.idea/workspace.xml[m
+[1mindex 79ecfa4..9820320 100644[m
+[1m--- a/.idea/workspace.xml[m
+[1m+++ b/.idea/workspace.xml[m
+[36m@@ -3,7 +3,7 @@[m
+   <component name="ChangeListManager">[m
+     <list default="true" id="ec62796e-4d73-4c4b-9b9d-4dc6522334c2" name="Default Changelist" comment="">[m
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />[m
+[31m-      <change beforePath="$PROJECT_DIR$/format.py" beforeDir="false" afterPath="$PROJECT_DIR$/format_old.py" afterDir="false" />[m
+[32m+[m[32m      <change beforePath="$PROJECT_DIR$/format.py" beforeDir="false" afterPath="$PROJECT_DIR$/format.py" afterDir="false" />[m
+     </list>[m
+     <option name="SHOW_DIALOG" value="false" />[m
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />[m
+[36m@@ -44,7 +44,7 @@[m
+       <option name="number" value="Default" />[m
+       <option name="presentableId" value="Default" />[m
+       <updated>1591506246697</updated>[m
+[31m-      <workItem from="1591506248159" duration="12754000" />[m
+[32m+[m[32m      <workItem from="1591506248159" duration="13895000" />[m
+     </task>[m
+     <servers />[m
+   </component>[m
+[1mdiff --git a/format.py b/format.py[m
+[1mindex 69677a9..1044f29 100644[m
+[1m--- a/format.py[m
+[1m+++ b/format.py[m
+[36m@@ -299,5 +299,167 @@[m [mclass PlayerBattleDataStruct:[m
+         self.princess_towers_hit_points = None[m
+ [m
+ [m
+[32m+[m[32mclass ItemListStruct:[m
+[32m+[m[32m    def __init__(self):[m
+[32m+[m[32m        self.items = None[m
+[32m+[m
+[32m+[m
+[32m+[m[32mclass TournamentHeaderListStruct:[m
+[32m+[m[32m    def __init__(self):[m
+[32m+[m[32m        self.items = None[m
+[32m+[m
+[32m+[m
+[32m+[m[32mclass TournamentHeaderStruct:[m
+[32m+[m[32m    def __init__(self):[m
+[32m+[m[32m        self.status = None[m
+[32m+[m[32m        self.preparation_duration = None[m
+[32m+[m[32m        self.created_time = None[m
+[32m+[m[32m        self.first_place_card_prize = None[m
+[32m+[m[32m        self.game_mode = GameModeStruct()[m
+[32m+[m[32m        self.duration = None[m
+[32m+[m[32m        self.type = None[m
+[32m+[m[32m        self.tag = None[m
+[32m+[m[32m        self.creator_tag = None[m
+[32m+[m[32m        self.name = None[m
+[32m+[m[32m        self.description = None[m
+[32m+[m[32m        self.capacity = None[m
+[32m+[m[32m        self.max_capacity = None[m
+[32m+[m[32m        self.level_cap = None[m
+[32m+[m
+[32m+[m
+[32m+[m[32mclass TournamentStruct:[m
+[32m+[m[32m    def __init__(self):[m
+[32m+[m[32m        self.members_list = TournamentMemberListStruct()[m
+[32m+[m[32m        self.status = None[m
+[32m+[m[32m        self.preparation_duration = None[m
+[32m+[m[32m        self.created_time = None[m
+[32m+[m[32m        self.started_time = None[m
+[32m+[m[32m        self.ended_time = None[m
+[32m+[m[32m        self.first_place_card_prize = None[m
+[32m+[m[32m        self.game_mode = GameModeStruct()[m
+[32m+[m[32m        self.duration = None[m
+[32m+[m[32m        self.type = None[m
+[32m+[m[32m        self.tag = None[m
+[32m+[m[32m        self.creator_tag = None[m
+[32m+[m[32m        self.name = None[m
+[32m+[m[32m        self.description = None[m
+[32m+[m[32m        self.capacity = None[m
+[32m+[m[32m        self.max_capacity = None[m
+[32m+[m[32m        self.level_cap = None[m
+[32m+[m
+[32m+[m
+[32m+[m[32mclass TournamentMemberListStruct:[m
+[32m+[m[32m    def __init__(self):[m
+[32m+[m[32m        self.items = None[m
+ [m
+ [m
+[32m+[m[32mclass TournamentMemberStruct:[m
+[32m+[m[32m    def __init__(self):[m
+[32m+[m[32m        self.clan = PlayerClanStruct()[m
+[32m+[m[32m        self.rank = None[m
+[32m+[m[32m        self.previous_rank = None[m
+[32m+[m[32m        self.tag = None[m
+[32m+[m[32m        self.name = None[m
+[32m+[m[32m        self.score = None[m
+[32m+[m
+[32m+[m
+[32m+[m[32mclass LocationListStruct:[m
+[32m+[m[32m    def __init__(self):[m
+[32m+[m[32m        self.items = None[m
+[32m+[m
+[32m+[m
+[32m+[m[32mclass ClanRankingListStruct:[m
+[32m+[m[32m    def __init__(self):[m
+[32m+[m[32m        self.items = None[m
+[32m+[m
+[32m+[m
+[32m+[m[32mclass ClanRankingStruct:[m
+[32m+[m[32m    def __init__(self):[m
+[32m+[m[32m        self.clan_score = None[m
+[32m+[m[32m        self.badge_id = None[m
+[32m+[m[32m        self.location = LocationStruct()[m
+[32m+[m[32m        self.members = None[m
+[32m+[m[32m        self.tag = None[m
+[32m+[m[32m        self.name = None[m
+[32m+[m[32m        self.rank = None[m
+[32m+[m[32m        self.previous_rank = None[m
+[32m+[m[32m        self.badge_urls = None[m
+[32m+[m
+[32m+[m
+[32m+[m[32mclass PlayerRankingListStruct:[m
+[32m+[m[32m    def __init__(self):[m
+[32m+[m[32m        self.items = None[m
+[32m+[m
+[32m+[m
+[32m+[m[32mclass PlayerRankingStruct:[m
+[32m+[m[32m    def __init__(self):[m
+[32m+[m[32m        self.clan = PlayerRankingClanStruct()[m
+[32m+[m[32m        self.arena = ArenaStruct()[m
+[32m+[m[32m        self.tag = None[m
+[32m+[m[32m        self.name = None[m
+[32m+[m[32m        self.exp_level = None[m
+[32m+[m[32m        self.rank = None[m
+[32m+[m[32m        self.previous_rank = None[m
+[32m+[m[32m        self.trophies = None[m
+[32m+[m
+[32m+[m
+[32m+[m[32mclass PlayerRankingClanStruct:[m
+[32m+[m[32m    def __init__(self):[m
+[32m+[m[32m        self.badge_id = None[m
+[32m+[m[32m        self.tag = None[m
+[32m+[m[32m        self.name = None[m
+[32m+[m[32m        self.badge_urls = None[m
+[32m+[m
+[32m+[m
+[32m+[m[32mclass LadderTournamentRankingListStruct:[m
+[32m+[m[32m    def __init__(self):[m
+[32m+[m[32m        self.items = None[m
+[32m+[m
+[32m+[m
+[32m+[m[32mclass LadderTournamentRanking:[m
+[32m+[m[32m    def __init__(self):[m
+[32m+[m[32m        self.clan = PlayerRankingClanStruct()[m
+[32m+[m[32m        self.wins = None[m
+[32m+[m[32m        self.losses = None[m
+[32m+[m[32m        self.tag = None[m
+[32m+[m[32m        self.name = None[m
+[32m+[m[32m        self.rank = None[m
+[32m+[m[32m        self.previous_rank = None[m
+[32m+[m
+[32m+[m
+[32m+[m[32mclass LadderTournamentListStruct:[m
+[32m+[m[32m    def __init__(self):[m
+[32m+[m[32m        self.items = None[m
+[32m+[m
+[32m+[m
+[32m+[m[32mclass LadderTournamentStruct:[m
+[32m+[m[32m    def __init__(self):[m
+[32m+[m[32m        self.game_mode = GameModeStruct()[m
+[32m+[m[32m        self.max_losses = None[m
+[32m+[m[32m        self.min_exp_level = None[m
+[32m+[m[32m        self.tournament_level = None[m
+[32m+[m[32m        self.milestone_rewards = SurvivalMilestoneRewardListStruct()[m
+[32m+[m[32m        self.free_tier_rewards = SurvivalMilestoneRewardListStruct()[m
+[32m+[m[32m        self.tag = None[m
+[32m+[m[32m        self.title = None[m
+[32m+[m[32m        self.start_time = None[m
+[32m+[m[32m        self.end_time = None[m
+[32m+[m[32m        self.top_rank_reward = SurvivalMilestoneRewardListStruct()[m
+[32m+[m[32m        self.max_top_reward_rank = None[m
+[32m+[m
+[32m+[m
+[32m+[m[32mclass SurvivalMilestoneRewardListStruct:[m
+[32m+[m[32m    def __init__(self):[m
+[32m+[m[32m        self.items = None[m
+[32m+[m
+[32m+[m
+[32m+[m[32mclass SurvivalMilestoneRewardStruct:[m
+[32m+[m[32m    def __init__(self):[m
+[32m+[m[32m        self.chest = None[m
+[32m+[m[32m        self.rarity = None[m
+[32m+[m[32m        self.resource = None[m
+[32m+[m[32m        self.type = None[m
+[32m+[m[32m        self.amount = None[m
+[32m+[m[32m        self.card = ItemStruct()[m
+[32m+[m[32m        self.wins = None[m
+[32m+[m
