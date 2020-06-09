@@ -7,11 +7,48 @@ import json
 from format import *
 from collections import namedtuple
 
+# obj = json.loads(data, object_hook=lambda d: namedtuple("X", d.keys())(*d.values()))
 
 # /v1/clans
 def transform_clans(data):
-    obj = json.loads(data, object_hook=lambda d: namedtuple("X", d.keys())(*d.values()))
-    print(obj[0].memberList[0].clanChestPoints)
+    decoded = json.loads(data)
+    clan_list = ClanListStruct()
+    for c in decoded["items"]:
+        clan = ClanStruct()
+        clan.member_list = ClanMemberListStruct()
+        clan.badge_id = c["badgeId"]
+        clan.tag = c["tag"]
+        clan.donations_per_week = c["donationsPerWeek"]
+        clan.clan_chest_status = c["clanChestStatus"]
+        clan.clan_chest_level = c["clanChestLevel"]
+        clan.clan_chest_max_level = c["clanChestMaxLevel"]
+        clan.clan_war_trophies = c["clanWarTrophies"]
+        clan.required_trophies = c["requiredTrophies"]
+        clan.clan_score = c["clanScore"]
+        clan.name = c["name"]
+        clan.location = LocationStruct()
+        clan.type = c["type"]
+        clan.members = c["members"]
+        clan.description = c["description"]
+        clan.clan_chest_points = c["clanChestPoints"]
+        clan.badge_urls = c["badgeUrls"]
+
+        clan.member_list.items = []
+        for m in c["memberList"]:
+            member = ClanMemberStruct()
+            member.arena = ArenaStruct()
+            member.clan_chest_points = m["clanChestPoints"]
+            member.last_seen = m["lastSeen"]
+            member.tag = m["tag"]
+            member.name = m["name"]
+            member.role = m["role"]
+            member.exp_level = m["expLevel"]
+            member.trophies = m["trophies"]
+            member.clan_rank = m["clanRank"]
+            member.previous_clan_rank = m["previousClanRank"]
+            member.donations = m["donations"]
+            member.donations_received = m["donationsReceived"]
+            clan.member_list.items.append(member)
 
 
 # /v1/clans/{clanTag}/warlog
