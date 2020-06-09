@@ -1,10 +1,21 @@
 # Royale API Transformer
 # Written by Andrew Eldridge
 # 6/7/2020
-# clan.py: parses res data from /v1/clan api reqs into usable structures
+# clans.py: parses res data from /v1/clan api reqs into usable structures
+
+import json
+from format import *
+from collections import namedtuple
 
 
-# /v1/clan/{clanTag}/warlog
+# /v1/clans
+def transform_clans(data):
+    obj = json.loads(data, object_hook=lambda d: namedtuple("X", d.keys())(*d.values()))
+    print(obj[0].memberList[0].clanChestPoints)
+
+
+# /v1/clans/{clanTag}/warlog
+"""
 def transform_war_log(data):
     # Convert war log data to internal structure
     war_log = WarLogStruct()
@@ -50,3 +61,4 @@ def transform_war_log(data):
 
     # Return reformatted war log
     return war_log
+"""
