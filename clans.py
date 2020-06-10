@@ -2,60 +2,100 @@ from format import *
 from locations import *
 
 
-def transform_clans(data):
+def transform_clan_list(x):
     clan_list = ClanListStruct()
     clan_list.items = []
-    for c in data["items"]:
+    for c in x["items"]:
         clan_list.items.append(transform_clan(c))
     return clan_list
 
 
-def transform_clan(c):
+def transform_clan(x):
     clan = ClanStruct()
     member_list = ClanMemberListStruct()
-    clan.badge_id = c["badgeId"]
-    clan.tag = c["tag"]
-    clan.donations_per_week = c["donationsPerWeek"]
-    clan.clan_chest_status = c["clanChestStatus"]
-    clan.clan_chest_level = c["clanChestLevel"]
-    clan.clan_chest_max_level = c["clanChestMaxLevel"]
-    clan.clan_war_trophies = c["clanWarTrophies"]
-    clan.required_trophies = c["requiredTrophies"]
-    clan.clan_score = c["clanScore"]
-    clan.name = c["name"]
-    clan.location = transform_location(c["location"])
-    clan.type = c["type"]
-    clan.members = c["members"]
-    clan.description = c["description"]
-    clan.clan_chest_points = c["clanChestPoints"]
-    clan.badge_urls = c["badgeUrls"]
+    clan.badge_id = x["badgeId"]
+    clan.tag = x["tag"]
+    clan.donations_per_week = x["donationsPerWeek"]
+    clan.clan_chest_status = x["clanChestStatus"]
+    clan.clan_chest_level = x["clanChestLevel"]
+    clan.clan_chest_max_level = x["clanChestMaxLevel"]
+    clan.clan_war_trophies = x["clanWarTrophies"]
+    clan.required_trophies = x["requiredTrophies"]
+    clan.clan_score = x["clanScore"]
+    clan.name = x["name"]
+    clan.location = transform_location(x["location"])
+    clan.type = x["type"]
+    clan.members = x["members"]
+    clan.description = x["description"]
+    clan.clan_chest_points = x["clanChestPoints"]
+    clan.badge_urls = x["badgeUrls"]
 
     member_list.items = []
-    for m in c["memberList"]:
-        member_list.items.append(transform_member(m))
+    for m in x["memberList"]:
+        member_list.items.append(transform_clan_member(m))
     clan.member_list = member_list
 
 
-def transform_member(m):
+def transform_clan_member_list(x):
+    pass
+
+
+def transform_clan_member(x):
     member = ClanMemberStruct()
     arena = ArenaStruct()
-    member.clan_chest_points = m["clanChestPoints"]
-    member.last_seen = m["lastSeen"]
-    member.tag = m["tag"]
-    member.name = m["name"]
-    member.role = m["role"]
-    member.exp_level = m["expLevel"]
-    member.trophies = m["trophies"]
-    member.clan_rank = m["clanRank"]
-    member.previous_clan_rank = m["previousClanRank"]
-    member.donations = m["donations"]
-    member.donations_received = m["donationsReceived"]
+    member.clan_chest_points = x["clanChestPoints"]
+    member.last_seen = x["lastSeen"]
+    member.tag = x["tag"]
+    member.name = x["name"]
+    member.role = x["role"]
+    member.exp_level = x["expLevel"]
+    member.trophies = x["trophies"]
+    member.clan_rank = x["clanRank"]
+    member.previous_clan_rank = x["previousClanRank"]
+    member.donations = x["donations"]
+    member.donations_received = x["donationsReceived"]
 
-    arena.name = m["arena"]["name"]
-    arena.id = m["arena"]["id"]
-    arena.icon_urls = m["arena"]["iconUrls"]
+    arena.name = x["arena"]["name"]
+    arena.id = x["arena"]["id"]
+    arena.icon_urls = x["arena"]["iconUrls"]
     member.arena = arena
     return member
+
+
+def transform_clan_war_log(x):
+    pass
+
+
+def transform_clan_war_log_entry(x):
+    pass
+
+
+def transform_clan_war_standing_list(x):
+    pass
+
+
+def transform_clan_war_participant_list(x):
+    pass
+
+
+def transform_clan_war_standing(x):
+    pass
+
+
+def transform_clan_war_participant(x):
+    pass
+
+
+def transform_clan_war_clan(x):
+    pass
+
+
+def transform_current_clan_war(x):
+    pass
+
+
+def transform_clan_war_clan_list(x):
+    pass
 
 
 # /v1/clans/{clanTag}/warlog
