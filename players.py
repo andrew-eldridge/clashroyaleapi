@@ -1,5 +1,18 @@
+from cards import *
+from globaltournaments import *
+from locations import *
+from clans import *
+from rankings import *
+from tournaments import *
+from format import *
+
+
 def transform_arena(x):
-    pass
+    arena = ArenaStruct()
+    arena.name = x["name"]
+    arena.id = x["id"]
+    arena.icon_urls = x["iconUrls"]
+    return arena
 
 
 def transform_player(x):

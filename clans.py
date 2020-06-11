@@ -1,18 +1,19 @@
+from cards import *
+from rankings import *
 from format import *
-from locations import *
 
 
 def transform_clan_list(x):
     clan_list = ClanListStruct()
     clan_list.items = []
-    for c in x["items"]:
-        clan_list.items.append(transform_clan(c))
+    for clan in x["items"]:
+        clan_list.items.append(transform_clan(clan))
     return clan_list
 
 
 def transform_clan(x):
     clan = ClanStruct()
-    member_list = ClanMemberListStruct()
+    clan.member_list = transform_clan_member_list(x["memberList"])
     clan.badge_id = x["badgeId"]
     clan.tag = x["tag"]
     clan.donations_per_week = x["donationsPerWeek"]
@@ -29,20 +30,20 @@ def transform_clan(x):
     clan.description = x["description"]
     clan.clan_chest_points = x["clanChestPoints"]
     clan.badge_urls = x["badgeUrls"]
-
-    member_list.items = []
-    for m in x["memberList"]:
-        member_list.items.append(transform_clan_member(m))
-    clan.member_list = member_list
+    return clan
 
 
 def transform_clan_member_list(x):
-    pass
+    clan_member_list = ClanMemberListStruct()
+    clan_member_list.items = []
+    for member in x["items"]:
+        clan_member_list.items.append(transform_clan_member(member))
+    return clan_member_list
 
 
 def transform_clan_member(x):
     member = ClanMemberStruct()
-    arena = ArenaStruct()
+    member.arena = transform_arena(x["arena"])
     member.clan_chest_points = x["clanChestPoints"]
     member.last_seen = x["lastSeen"]
     member.tag = x["tag"]
@@ -54,95 +55,89 @@ def transform_clan_member(x):
     member.previous_clan_rank = x["previousClanRank"]
     member.donations = x["donations"]
     member.donations_received = x["donationsReceived"]
-
-    arena.name = x["arena"]["name"]
-    arena.id = x["arena"]["id"]
-    arena.icon_urls = x["arena"]["iconUrls"]
-    member.arena = arena
     return member
 
 
 def transform_clan_war_log(x):
-    pass
+    clan_war_log = ClanWarLogStruct()
+    clan_war_log.items = []
+    for log_entry in x["items"]:
+        clan_war_log.items.append(transform_clan_war_log_entry(log_entry))
+    return clan_war_log
 
 
 def transform_clan_war_log_entry(x):
-    pass
+    clan_war_log_entry = ClanWarLogEntryStruct()
+    clan_war_log_entry.standings = x["standings"]
+    clan_war_log_entry.season_id = x["seasonId"]
+    clan_war_log_entry.participants = transform_clan_war_participant_list(x["participants"])
+    clan_war_log_entry.created_date = x["createdDate"]
+    return clan_war_log_entry
 
 
 def transform_clan_war_standing_list(x):
-    pass
+    clan_war_standing_list = ClanWarStandingListStruct()
+    clan_war_standing_list.items = []
+    for standing in x["items"]:
+        clan_war_standing_list.items.append(transform_clan_war_standing(standing))
+    return clan_war_standing_list
 
 
 def transform_clan_war_participant_list(x):
-    pass
+    clan_war_participant_list = ClanWarParticipantListStruct()
+    clan_war_participant_list.items = []
+    for participant in x["items"]:
+        clan_war_participant_list.items.append(transform_clan_war_participant(participant))
+    return clan_war_participant_list
 
 
 def transform_clan_war_standing(x):
-    pass
+    clan_war_standing = ClanWarStandingStruct()
+    clan_war_standing.trophy_change = x["trophyChange"]
+    clan_war_standing.clan = transform_clan_war_clan(x["clan"])
+    return clan_war_standing
 
 
 def transform_clan_war_participant(x):
-    pass
+    clan_war_participant = ClanWarParticipantStruct()
+    clan_war_participant.tag = x["tag"]
+    clan_war_participant.name = x["name"]
+    clan_war_participant.cards_earned = x["cardsEarned"]
+    clan_war_participant.battles_played = x["battlesPlayer"]
+    clan_war_participant.wins = x["wins"]
+    clan_war_participant.collection_day_battles_played = x["collectionDayBattlesPlayed"]
+    clan_war_participant.number_of__battles = x["numberOfBattles"]
+    return clan_war_participant
 
 
 def transform_clan_war_clan(x):
-    pass
+    clan_war_clan = ClanWarClanStruct()
+    clan_war_clan.tag = x["tag"]
+    clan_war_clan.clan_score = x["clanScore"]
+    clan_war_clan.crowns = x["crowns"]
+    clan_war_clan.badge_id = x["badgeId"]
+    clan_war_clan.name = x["name"]
+    clan_war_clan.participants = x["participants"]
+    clan_war_clan.battles_played = x["battlesPlayed"]
+    clan_war_clan.wins = x["wins"]
+    return clan_war_clan
 
 
 def transform_current_clan_war(x):
-    pass
+    current_clan_war = CurrentClanWarStruct()
+    current_clan_war.state = x["state"]
+    current_clan_war.clan = transform_clan_war_clan(x["clan"])
+    current_clan_war.participants = transform_clan_war_participant_list(x["participants"])
+    current_clan_war.clans = transform_clan_war_clan_list(x["clans"])
+    current_clan_war.collection_end_time = x["collectionEndTime"]
+    current_clan_war.war_end_time = x["warEndTime"]
+    return current_clan_war
 
 
 def transform_clan_war_clan_list(x):
-    pass
+    clan_war_clan_list = ClanWarClanListStruct()
+    clan_war_clan_list.items = []
+    for clan in x["items"]:
+        clan_war_clan_list.items.append(transform_clan_war_clan(clan))
+    return clan_war_clan_list
 
-
-# /v1/clans/{clanTag}/warlog
-"""
-def transform_war_log(data):
-    # Convert war log data to internal structure
-    war_log = WarLogStruct()
-    for war in data["items"]:
-        # Construct war objects, append to war log
-        curr_war = WarStruct()
-        curr_war.seasonId = war["seasonId"]
-        curr_war.createdDate = war["createdDate"]
-
-        # Construct participant objects, append to war's participants list
-        for participant in war["participants"]:
-            curr_participant = ParticipantStruct()
-            curr_participant.tag = participant["tag"]
-            curr_participant.name = participant["name"]
-            curr_participant.cardsEarned = participant["cardsEarned"]
-            curr_participant.battlesPlayed = participant["battlesPlayed"]
-            curr_participant.wins = participant["wins"]
-            curr_participant.collectionDayBattlesPlayed = participant["collectionDayBattlesPlayed"]
-            curr_participant.numberOfBattles = participant["numberOfBattles"]
-            curr_war.participants.append(curr_participant)
-
-        # Construct standing objects, append to war's standings list
-        for standing in war["standings"]:
-            curr_standing = StandingStruct()
-            curr_clan = ClanStruct()
-            clan = standing["clan"]
-            # Child attributes
-            curr_clan.tag = clan["tag"]
-            curr_clan.name = clan["name"]
-            curr_clan.badgeId = clan["badgeId"]
-            curr_clan.clanScore = clan["clanScore"]
-            curr_clan.participants = clan["participants"]
-            curr_clan.battlesPlayed = clan["battlesPlayed"]
-            curr_clan.wins = clan["wins"]
-            curr_clan.crowns = clan["crowns"]
-            # Parent attributes
-            curr_standing.clan = curr_clan
-            curr_standing.trophyChange = standing["trophyChange"]
-            curr_war.standings.append(curr_standing)
-
-        # Append current war item to log
-        war_log.items.append(curr_war)
-
-    # Return reformatted war log
-    return war_log
-"""
