@@ -1,10 +1,10 @@
-from cards import *
-from globaltournaments import *
-from locations import *
-from players import *
-from clans import *
-from tournaments import *
-from format import *
+from .cards import *
+from .globaltournaments import *
+from .locations import *
+from .players import *
+from .clans import *
+from .tournaments import *
+from .format import *
 
 
 def transform_clan_ranking_list(x):

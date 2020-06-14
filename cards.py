@@ -1,5 +1,5 @@
-from clans import *
-from format import *
+from .clans import *
+from .format import *
 
 
 def transform_item(x):

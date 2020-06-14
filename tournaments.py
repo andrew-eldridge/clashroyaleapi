@@ -1,10 +1,10 @@
-from cards import *
-from globaltournaments import *
-from locations import *
-from players import *
-from rankings import *
-from clans import *
-from format import *
+from .cards import *
+from .globaltournaments import *
+from .locations import *
+from .players import *
+from .rankings import *
+from .clans import *
+from .format import *
 
 
 def transform_tournament_header_list(x):

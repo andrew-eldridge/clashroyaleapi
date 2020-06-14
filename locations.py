@@ -1,5 +1,5 @@
-from cards import *
-from format import *
+from .cards import *
+from .format import *
 
 
 def transform_location(x):
