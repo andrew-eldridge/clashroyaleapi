@@ -36,7 +36,7 @@ def transform_clan(x):
 def transform_clan_member_list(x):
     clan_member_list = ClanMemberListStruct()
     clan_member_list.items = []
-    for member in x['items']:
+    for member in x:
         clan_member_list.items.append(transform_clan_member(member))
     return clan_member_list
 
@@ -78,7 +78,7 @@ def transform_clan_war_log_entry(x):
 def transform_clan_war_standing_list(x):
     clan_war_standing_list = ClanWarStandingListStruct()
     clan_war_standing_list.items = []
-    for standing in x['items']:
+    for standing in x:
         clan_war_standing_list.items.append(transform_clan_war_standing(standing))
     return clan_war_standing_list
 
@@ -86,7 +86,7 @@ def transform_clan_war_standing_list(x):
 def transform_clan_war_participant_list(x):
     clan_war_participant_list = ClanWarParticipantListStruct()
     clan_war_participant_list.items = []
-    for participant in x['items']:
+    for participant in x:
         clan_war_participant_list.items.append(transform_clan_war_participant(participant))
     return clan_war_participant_list
 
@@ -103,7 +103,7 @@ def transform_clan_war_participant(x):
     clan_war_participant.tag = x['tag']
     clan_war_participant.name = x['name']
     clan_war_participant.cards_earned = x['cardsEarned']
-    clan_war_participant.battles_played = x['battlesPlayer']
+    clan_war_participant.battles_played = x['battlesPlayed']
     clan_war_participant.wins = x['wins']
     clan_war_participant.collection_day_battles_played = x['collectionDayBattlesPlayed']
     clan_war_participant.number_of__battles = x['numberOfBattles']
@@ -137,7 +137,7 @@ def transform_current_clan_war(x):
 def transform_clan_war_clan_list(x):
     clan_war_clan_list = ClanWarClanListStruct()
     clan_war_clan_list.items = []
-    for clan in x['items']:
+    for clan in x:
         clan_war_clan_list.items.append(transform_clan_war_clan(clan))
     return clan_war_clan_list
 

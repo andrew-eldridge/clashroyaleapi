@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ec62796e-4d73-4c4b-9b9d-4dc6522334c2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clans.py" beforeDir="false" afterPath="$PROJECT_DIR$/clans.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/globaltournaments.py" beforeDir="false" afterPath="$PROJECT_DIR$/globaltournaments.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/players.py" beforeDir="false" afterPath="$PROJECT_DIR$/players.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +34,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../allegiance-clan-data-analysis" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -49,7 +52,8 @@
       <workItem from="1591842377832" duration="1302000" />
       <workItem from="1591843694809" duration="1288000" />
       <workItem from="1591887592708" duration="52000" />
-      <workItem from="1592018763532" duration="5090000" />
+      <workItem from="1592018763532" duration="6851000" />
+      <workItem from="1592267853163" duration="910000" />
     </task>
     <servers />
   </component>
@@ -89,10 +93,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-7" y="0" width="974" height="1047" key="dock-window-2/0.0.1920.1040@0.0.1920.1040" timestamp="1591843390211" />
-    <state x="1147" y="279" width="709" height="546" key="find.popup" timestamp="1592018937751">
+    <state x="1147" y="279" width="709" height="546" key="find.popup" timestamp="1592268862407">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1147" y="279" width="709" height="546" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592018937751" />
+    <state x="1147" y="279" width="709" height="546" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592268862407" />
     <state x="1103" y="229" width="672" height="678" key="search.everywhere.popup" timestamp="1592019034483">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

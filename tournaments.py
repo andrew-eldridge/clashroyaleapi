@@ -59,7 +59,7 @@ def transform_tournament(x):
 def transform_tournament_member_list(x):
     tournament_member_list = TournamentMemberListStruct()
     tournament_member_list.items = []
-    for item in x['items']:
+    for item in x:
         tournament_member_list.items.append(transform_tournament_member(item))
     return tournament_member_list
 

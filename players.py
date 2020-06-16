@@ -68,7 +68,7 @@ def transform_player_league_statistics(x):
 def transform_player_item_level_list(x):
     player_item_level_list = PlayerItemLevelListStruct()
     player_item_level_list.items = []
-    for item in x['items']:
+    for item in x:
         player_item_level_list.items.append(transform_player_item_level(item))
     return player_item_level_list
 
@@ -76,7 +76,7 @@ def transform_player_item_level_list(x):
 def transform_player_achievement_badge_list(x):
     player_achievement_badge_list = PlayerAchievementBadgeListStruct()
     player_achievement_badge_list.items = []
-    for item in x['items']:
+    for item in x:
         player_achievement_badge_list.items.append(transform_player_achievement_badge(item))
     return player_achievement_badge_list
 
@@ -84,7 +84,7 @@ def transform_player_achievement_badge_list(x):
 def transform_player_achievement_progress_list(x):
     player_achievement_progress_list = PlayerAchievementProgressListStruct()
     player_achievement_progress_list.items = []
-    for item in x['items']:
+    for item in x:
         player_achievement_progress_list.items.append(transform_player_achievement_progress(item))
     return player_achievement_progress_list
 
@@ -140,7 +140,7 @@ def transform_upcoming_chests(x):
 def transform_chest_list(x):
     chest_list = ChestListStruct()
     chest_list.items = []
-    for item in x['items']:
+    for item in x:
         chest_list.items.append(transform_chest(item))
     return chest_list
 
@@ -156,7 +156,7 @@ def transform_chest(x):
 def transform_battle_list(x):
     battle_list = BattleListStruct()
     battle_list.items = []
-    for item in x['items']:
+    for item in x:
         battle_list.items.append(transform_battle(item))
     return battle_list
 
@@ -189,7 +189,7 @@ def transform_game_mode(x):
 def transform_player_battle_data_list(x):
     player_battle_data_list = PlayerBattleDataListStruct()
     player_battle_data_list.items = []
-    for item in x['items']:
+    for item in x:
         player_battle_data_list.items.append(transform_player_battle_data(item))
     return player_battle_data_list
 

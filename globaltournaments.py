@@ -35,7 +35,7 @@ def transform_ladder_tournament(x):
 def transform_survival_milestone_reward_list(x):
     survival_milestone_reward_list = SurvivalMilestoneRewardListStruct()
     survival_milestone_reward_list.items = []
-    for item in x['items']:
+    for item in x:
         survival_milestone_reward_list.items.append(transform_survival_milestone_reward(item))
     return survival_milestone_reward_list
 
