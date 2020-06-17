@@ -13,7 +13,7 @@ def transform_arena(x):
     arena.id = x['id']
     try:
         x['iconUrls']
-    except NameError:
+    except KeyError:
         pass
     else:
         arena.icon_urls = x['iconUrls']
