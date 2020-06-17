@@ -11,7 +11,12 @@ def transform_arena(x):
     arena = ArenaStruct()
     arena.name = x['name']
     arena.id = x['id']
-    arena.icon_urls = x['iconUrls']
+    try:
+        x['iconUrls']
+    except NameError:
+        pass
+    else:
+        arena.icon_urls = x['iconUrls']
     return arena
 
 
